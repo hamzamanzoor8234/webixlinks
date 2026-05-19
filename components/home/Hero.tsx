@@ -25,13 +25,13 @@ export function Hero() {
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-red-400">
             AI & Cloud Engineering Studio
           </p>
-          <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
+          <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-white md:text-5xl lg:text-6xl">
             Engineering Intelligent AI Agents &{" "}
             <span className="text-brand-gradient">
               Enterprise Cloud Infrastructure
             </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             From custom MERN/MEAN architectures to autonomous Agentic AI
             workflows across AWS, GCP, and Azure—we build the secure, scalable
             digital foundations for modern enterprises.

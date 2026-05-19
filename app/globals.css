@@ -1,14 +1,25 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-:root {
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root,
+.light {
+  --background: #fafafa;
+  --foreground: #09090b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --surface: #ffffff;
+  --brand-from: #ef4444;
+  --brand-to: #b91c1c;
+}
+
+.dark {
   --background: #000000;
   --foreground: #ffffff;
   --muted: #a1a1aa;
   --border: #27272a;
   --surface: #18181b;
-  --brand-from: #ef4444;
-  --brand-to: #b91c1c;
 }
 
 @theme inline {
@@ -39,11 +50,17 @@ body {
 }
 
 .bg-grid {
-  background-color: #000000;
+  background-color: var(--background);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.dark .bg-grid {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 64px 64px;
 }
 
 .bg-brand-gradient {
@@ -51,10 +68,14 @@ body {
 }
 
 .text-brand-gradient {
-  background-image: linear-gradient(135deg, #ef4444 0%, #f87171 50%, #ffffff 100%);
+  background-image: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #09090b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.dark .text-brand-gradient {
+  background-image: linear-gradient(135deg, #ef4444 0%, #f87171 50%, #ffffff 100%);
 }
 
 @keyframes marquee {
@@ -71,7 +92,12 @@ body {
 }
 
 .prose-article {
-  @apply prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-red-400 prose-a:no-underline hover:prose-a:text-red-300 prose-strong:text-zinc-200 prose-code:rounded-md prose-code:border prose-code:border-zinc-800 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-red-300 prose-code:before:content-none prose-code:after:content-none prose-pre:rounded-xl prose-pre:border prose-pre:border-zinc-800 prose-pre:bg-zinc-950 prose-li:text-zinc-400;
+  @apply prose max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-p:leading-relaxed prose-a:text-red-500 prose-a:no-underline hover:prose-a:text-red-600 prose-strong:text-zinc-900 prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-red-600 prose-code:before:content-none prose-code:after:content-none prose-pre:rounded-xl prose-li:text-zinc-600;
+  @apply prose-headings:text-zinc-900 prose-p:text-zinc-600 prose-code:border prose-code:border-zinc-200 prose-code:bg-zinc-100 prose-pre:border prose-pre:border-zinc-200 prose-pre:bg-zinc-50;
+}
+
+.dark .prose-article {
+  @apply prose-invert prose-headings:text-white prose-p:text-zinc-400 prose-strong:text-zinc-200 prose-a:text-red-400 hover:prose-a:text-red-300 prose-code:border-zinc-800 prose-code:bg-zinc-900 prose-code:text-red-300 prose-pre:border-zinc-800 prose-pre:bg-zinc-950 prose-li:text-zinc-400;
 }
 
 @media (prefers-reduced-motion: reduce) {

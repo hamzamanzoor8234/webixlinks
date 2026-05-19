@@ -7,7 +7,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-zinc-800 bg-black">
+    <footer className="border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-black">
       <Container className="py-12 md:py-16">
         <div
           className="grid gap-10 md:grid-cols-3"
@@ -22,14 +22,14 @@ export function Footer() {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">
               Elite AI agents and enterprise cloud infrastructure for
               forward-thinking organizations.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-zinc-500">
+            <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -37,7 +37,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-zinc-400 transition-colors hover:text-red-400"
+                    className="text-sm text-zinc-600 transition-colors hover:text-red-500 dark:text-zinc-400 dark:hover:text-red-400"
                   >
                     {link.label}
                   </Link>
@@ -55,10 +55,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-zinc-500">
+            <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
               Get in Touch
             </h3>
-            <p className="text-sm leading-relaxed text-zinc-400">
+            <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               Ready to architect your next system? Submit a technical brief and
               our engineering leads will respond within one business day.
             </p>
@@ -72,12 +72,12 @@ export function Footer() {
         </div>
 
         <div
-          className="mt-12 flex flex-col gap-4 border-t border-zinc-800 pt-8 md:flex-row md:items-center md:justify-between"
+          className="mt-12 flex flex-col gap-4 border-t border-zinc-200 pt-8 dark:border-zinc-800 md:flex-row md:items-center md:justify-between"
         >
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-zinc-600 dark:text-zinc-500">
             © {year} Webixlinks. All rights reserved.
           </p>
-          <p className="max-w-xl text-sm leading-relaxed text-zinc-500">
+          <p className="max-w-xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">
             Your IP and data safety matter. All project specifications are
             handled under strict confidentiality.
           </p>

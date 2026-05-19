@@ -8,19 +8,32 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const linkClass = (active: boolean) =>
+    cn(
+      "text-sm font-medium transition-colors",
+      active
+        ? "text-red-500 dark:text-red-400"
+        : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+    );
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/70 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-black/70">
       <nav
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
-        <Link href="/" className="flex items-center shrink-0" aria-label="Webixlinks home">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center"
+          aria-label="Webixlinks home"
+        >
           <Image
             src="/logo/webixlinks.png"
             alt="Webixlinks"
@@ -31,9 +44,7 @@ export function Navbar() {
           />
         </Link>
 
-        <div
-          className="hidden items-center gap-8 md:flex"
-        >
+        <div className="hidden items-center gap-6 md:flex lg:gap-8">
           {NAV_LINKS.map((link) => {
             const isActive =
               pathname === link.href ||
@@ -42,29 +53,35 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-white",
-                  isActive ? "text-red-400" : "text-zinc-400"
-                )}
+                className={linkClass(isActive)}
               >
                 {link.label}
               </Link>
             );
           })}
-          <Button href="/contact" variant="primary" className="text-sm">
-            Request Consultation
-          </Button>
         </div>
 
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 text-zinc-300 transition-colors hover:border-zinc-700 hover:text-white md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
+        <div
+          className="flex items-center gap-2 sm:gap-3"
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <ThemeToggle />
+          <Button
+            href="/contact"
+            variant="primary"
+            className="hidden text-sm sm:inline-flex"
+          >
+            Request Consultation
+          </Button>
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-700 transition-colors hover:border-zinc-300 hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-white md:hidden"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -74,9 +91,11 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-zinc-800 bg-zinc-950 md:hidden"
+            className="overflow-hidden border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 md:hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-4">
+            <div
+              className="flex flex-col gap-1 px-4 py-4"
+            >
               {NAV_LINKS.map((link) => {
                 const isActive =
                   pathname === link.href ||
@@ -89,8 +108,8 @@ export function Navbar() {
                     className={cn(
                       "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                       isActive
-                        ? "bg-red-500/10 text-red-400"
-                        : "text-zinc-300 hover:bg-zinc-900 hover:text-white"
+                        ? "bg-red-500/10 text-red-500 dark:text-red-400"
+                        : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white"
                     )}
                   >
                     {link.label}

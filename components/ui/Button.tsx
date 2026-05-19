@@ -29,12 +29,13 @@ const variants: Record<ButtonVariant, string> = {
   primary:
     "bg-brand-gradient text-white shadow-lg shadow-red-500/20 hover:shadow-red-500/30 hover:brightness-110",
   secondary:
-    "border border-zinc-700 bg-zinc-900/50 text-zinc-100 hover:border-zinc-600 hover:bg-zinc-800/50",
-  ghost: "text-zinc-300 hover:text-white hover:bg-zinc-800/50",
+    "border border-zinc-300 bg-zinc-100 text-zinc-900 hover:border-zinc-400 hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-900/50 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800/50",
+  ghost:
+    "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/50 dark:hover:text-white",
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-offset-black";
 
 export function Button({
   children,

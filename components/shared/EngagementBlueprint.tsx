@@ -7,7 +7,7 @@ const stepIcons = [Compass, Sparkles, Server, Rocket];
 
 export function EngagementBlueprint() {
   return (
-    <Section className="border-t border-zinc-800 bg-zinc-950/30">
+    <Section className="border-t border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-950/30">
       <Container>
         <div
           className="mb-12 text-center md:mb-16"
@@ -15,10 +15,10 @@ export function EngagementBlueprint() {
           <p className="mb-3 font-mono text-xs uppercase tracking-widest text-red-400">
             Execution Model
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
             The Engagement Blueprint
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
             A disciplined four-phase path from architectural discovery to
             continuous agentic optimization—designed for CTOs who need
             predictable delivery.
@@ -31,7 +31,7 @@ export function EngagementBlueprint() {
             return (
               <div
                 key={step.step}
-                className="relative rounded-xl border border-zinc-800 bg-zinc-900/40 p-6 transition-colors hover:border-red-500/20"
+                className="relative rounded-xl border border-zinc-200 bg-white p-6 transition-colors hover:border-red-500/20 dark:border-zinc-800 dark:bg-zinc-900/40"
               >
                 {index < ENGAGEMENT_STEPS.length - 1 && (
                   <span
@@ -47,7 +47,7 @@ export function EngagementBlueprint() {
                     <Icon className="h-4 w-4" />
                   </div>
                 </div>
-                <h3 className="text-sm font-semibold leading-snug text-white">
+                <h3 className="text-sm font-semibold leading-snug text-zinc-900 dark:text-white">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-500">
