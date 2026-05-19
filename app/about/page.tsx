@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Philosophy } from "@/components/about/Philosophy";
 import { CorePillars } from "@/components/about/CorePillars";
+import { EngagementBlueprint } from "@/components/shared/EngagementBlueprint";
+import { SecurityMatrix } from "@/components/shared/SecurityMatrix";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,6 +20,8 @@ export default function AboutPage() {
       />
       <Philosophy />
       <CorePillars />
+      <EngagementBlueprint />
+      <SecurityMatrix />
     </>
   );
 }

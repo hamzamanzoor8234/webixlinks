@@ -1,13 +1,17 @@
 import type {
   CapabilityCard,
+  EngagementStep,
   NavLink,
   Pillar,
   ProjectType,
+  SecurityStandard,
   ServiceBlock,
 } from "./types";
 
 export const NAV_LINKS: NavLink[] = [
   { href: "/services", label: "Services" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/articles", label: "Insights" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -126,6 +130,60 @@ export const SERVICES: ServiceBlock[] = [
       "Design-to-engineering handoff workflows",
     ],
     icon: "palette",
+  },
+];
+
+export const ENGAGEMENT_STEPS: EngagementStep[] = [
+  {
+    step: "01",
+    title: "Architectural Discovery & Spec Definition",
+    description:
+      "We map system boundaries, data flows, threat models, and success metrics into a signed technical specification before implementation begins.",
+  },
+  {
+    step: "02",
+    title: "Rapid Component Prototyping & Schema Design",
+    description:
+      "High-fidelity prototypes and database schemas are validated against real workloads—eliminating architectural surprises in production.",
+  },
+  {
+    step: "03",
+    title: "Cloud Infrastructure Hardening & Multi-Region Deploy",
+    description:
+      "IAM policies, isolated environments, CI/CD pipelines, and multi-region failover are configured with infrastructure-as-code discipline.",
+  },
+  {
+    step: "04",
+    title: "Continuous Evaluation & Agentic Optimization",
+    description:
+      "Post-launch telemetry, LLM evaluation harnesses, and performance regression gates keep systems improving under production load.",
+  },
+];
+
+export const SECURITY_STANDARDS: SecurityStandard[] = [
+  {
+    title: "Automated Rate-Limiting",
+    description:
+      "Edge and application-layer throttling protect APIs from abuse, credential stuffing, and burst traffic without degrading legitimate users.",
+    icon: "gauge",
+  },
+  {
+    title: "Strict Data Isolation Boundaries",
+    description:
+      "Tenant-scoped storage, row-level access controls, and environment separation ensure no cross-client data leakage at rest or in transit.",
+    icon: "shield",
+  },
+  {
+    title: "Secure Tokenization",
+    description:
+      "Short-lived JWTs, rotated API keys, and vault-backed secrets replace hardcoded credentials across every service boundary.",
+    icon: "key",
+  },
+  {
+    title: "Pre-commit Husky Code Security",
+    description:
+      "Git hooks enforce linting, secret scanning, and dependency audits before code reaches shared branches or production pipelines.",
+    icon: "git-branch",
   },
 ];
 
