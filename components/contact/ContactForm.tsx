@@ -7,7 +7,7 @@ import type { ContactFormData, ProjectType } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const inputClass =
-  "w-full rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:border-red-500/50 focus:outline-none focus:ring-2 focus:ring-red-500/20";
+  "w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-red-500/50 focus:outline-none focus:ring-2 focus:ring-red-500/20 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-white dark:placeholder:text-zinc-600";
 
 export function ContactForm() {
   const [form, setForm] = useState<ContactFormData>({
@@ -46,7 +46,7 @@ export function ContactForm() {
   if (submitted) {
     return (
       <div className="rounded-xl border border-red-500/30 bg-red-500/5 p-8 text-center">
-        <h3 className="text-lg font-semibold text-white">Brief received</h3>
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Brief received</h3>
         <p className="mt-2 text-sm text-zinc-400">
           Our engineering team will review your specifications and respond
           within one business day.

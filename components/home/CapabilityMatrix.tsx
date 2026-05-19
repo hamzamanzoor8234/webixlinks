@@ -12,10 +12,10 @@ export function CapabilityMatrix() {
           <p className="mb-3 font-mono text-xs uppercase tracking-widest text-red-400">
             Core Capabilities
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
             The Capability Matrix
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
             Three engineering pillars that power every engagement—from autonomous
             AI to hardened cloud infrastructure.
           </p>
@@ -31,15 +31,15 @@ export function CapabilityMatrix() {
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 text-red-400 transition-colors group-hover:bg-red-500/20">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-lg font-semibold text-white">{cap.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{cap.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {cap.description}
                 </p>
-                <ul className="mt-4 flex-1 space-y-2 border-t border-zinc-800 pt-4">
+                <ul className="mt-4 flex-1 space-y-2 border-t border-zinc-200 pt-4 dark:border-zinc-800">
                   {cap.highlights.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2 text-sm text-zinc-300"
+                      className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-300"
                     >
                       <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-red-500" />
                       {item}
