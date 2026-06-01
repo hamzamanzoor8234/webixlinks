@@ -22,7 +22,18 @@ export const metadata: Metadata = {
   },
   description:
     "Engineering intelligent AI agents and enterprise cloud infrastructure. MERN, MEAN, NestJS, and multi-cloud systems across AWS, GCP, and Azure.",
-
+  keywords: [
+    "AI Agents",
+    "Enterprise Cloud Engineering",
+    "Multi-Cloud Infrastructure",
+    "AWS",
+    "GCP",
+    "Azure",
+    "NestJS",
+    "MERN Stack",
+    "MEAN Stack",
+    "Webixlinks"
+  ],
   // Theme styling
   themeColor: "#ffffff",
 
