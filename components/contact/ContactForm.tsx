@@ -19,10 +19,11 @@ export function ContactForm() {
   });
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const update = (field: keyof ContactFormData, value: string | ProjectType) => {
     setForm((prev) => ({ ...prev, [field]: value }));
-    setErrors((prev) => ({ ...prev, [field]: undefined }));
+    setErrors((prev) => ({ ...prev, [field]: undefined, submit: undefined }));
   };
 
   const validate = () => {
@@ -37,17 +38,42 @@ export function ContactForm() {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setSubmitted(true);
+    setSubmitting(true);
+    setErrors((prev) => ({ ...prev, submit: undefined }));
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const resData = await response.json();
+      if (!response.ok) {
+        throw new Error(resData.error || "Submission failed");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setErrors((prev) => ({
+        ...prev,
+        submit: err.message || "An error occurred while submitting your brief. Please try again.",
+      }));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
     return (
       <div className="rounded-xl border border-red-500/30 bg-red-500/5 p-8 text-center">
         <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Brief received</h3>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
           Our engineering team will review your specifications and respond
           within one business day.
         </p>
@@ -57,9 +83,15 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+      {errors.submit && (
+        <div className="rounded-lg border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-600 dark:text-red-400">
+          {errors.submit}
+        </div>
+      )}
+
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-zinc-300">
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
             Name
           </label>
           <input
@@ -70,13 +102,14 @@ export function ContactForm() {
             className={cn(inputClass, errors.name && "border-red-500/50")}
             placeholder="Jane Chen"
             autoComplete="name"
+            disabled={submitting}
           />
           {errors.name && (
-            <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+            <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.name}</p>
           )}
         </div>
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium text-zinc-300">
+          <label htmlFor="email" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
             Corporate Email
           </label>
           <input
@@ -87,15 +120,16 @@ export function ContactForm() {
             className={cn(inputClass, errors.email && "border-red-500/50")}
             placeholder="jane@company.com"
             autoComplete="email"
+            disabled={submitting}
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+            <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.email}</p>
           )}
         </div>
       </div>
 
       <div>
-        <label htmlFor="company" className="mb-2 block text-sm font-medium text-zinc-300">
+        <label htmlFor="company" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
           Company Name
         </label>
         <input
@@ -106,9 +140,10 @@ export function ContactForm() {
           className={cn(inputClass, errors.company && "border-red-500/50")}
           placeholder="Acme Corp"
           autoComplete="organization"
+          disabled={submitting}
         />
         {errors.company && (
-          <p className="mt-1 text-sm text-red-400">{errors.company}</p>
+          <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.company}</p>
         )}
       </div>
 
@@ -116,11 +151,12 @@ export function ContactForm() {
         value={form.projectType}
         onChange={(v) => update("projectType", v)}
         error={errors.projectType}
+        disabled={submitting}
       />
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-zinc-300">
-          Project Overview <span className="text-zinc-600">(optional)</span>
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          Project Overview <span className="text-zinc-500 dark:text-zinc-600">(optional)</span>
         </label>
         <textarea
           id="message"
@@ -129,14 +165,15 @@ export function ContactForm() {
           onChange={(e) => update("message", e.target.value)}
           className={cn(inputClass, "resize-y")}
           placeholder="Describe your architecture goals, timeline, and constraints..."
+          disabled={submitting}
         />
       </div>
 
-      <Button type="submit" variant="primary" className="w-full sm:w-auto">
-        Submit Technical Brief
+      <Button type="submit" variant="primary" className="w-full sm:w-auto" disabled={submitting}>
+        {submitting ? "Sending Brief..." : "Submit Technical Brief"}
       </Button>
 
-      <p className="rounded-lg border border-zinc-800 bg-zinc-900/30 px-4 py-3 text-sm leading-relaxed text-zinc-500">
+      <p className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900/30 dark:text-zinc-500">
         NDA available upon request. Data protected under strict end-to-end
         encryption protocols.
       </p>
