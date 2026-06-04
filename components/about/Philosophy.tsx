@@ -8,10 +8,10 @@ export function Philosophy() {
         <div
           className="mx-auto max-w-3xl"
         >
-          <h2 className="text-2xl font-semibold text-white md:text-3xl">
+          <h2 className="text-2xl font-semibold text-zinc-900 dark:text-white md:text-3xl">
             Engineering Philosophy
           </h2>
-          <div className="mt-6 space-y-4 text-lg leading-relaxed text-zinc-400">
+          <div className="mt-6 space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             <p>
               Webixlinks is not a generic marketing agency—we are an elite
               collective of technical leads, full-stack software architects, and

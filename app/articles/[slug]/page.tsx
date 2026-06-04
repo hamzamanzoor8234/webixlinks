@@ -31,5 +31,38 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
-  return <ArticleBody article={article} />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": article.title,
+    "description": article.description,
+    "datePublished": article.publishedAt,
+    "author": {
+      "@type": "Organization",
+      "name": "Webixlinks",
+      "url": "https://webixlinks.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Webixlinks",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://webixlinks.com/logo/webixlinks.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://webixlinks.com/articles/${article.slug}`
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ArticleBody article={article} />
+    </>
+  );
 }
