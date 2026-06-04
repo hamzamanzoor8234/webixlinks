@@ -32,8 +32,8 @@ function CategoryChip({
       className={cn(
         "rounded-full border px-3 py-1 font-mono text-xs transition-colors",
         active
-          ? "border-red-500/50 bg-red-500/10 text-red-400"
-          : "border-zinc-800 text-zinc-500"
+          ? "border-red-500/50 bg-red-500/10 text-red-500 dark:text-red-400"
+          : "border-zinc-200 text-zinc-500 dark:border-zinc-800"
       )}
     >
       {category}
@@ -62,21 +62,21 @@ export function ArticleFeed() {
 
         <Link
           href={`/articles/${featured.slug}`}
-          className="group block overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/40 transition-all hover:border-red-500/30"
+          className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/40 transition-all hover:border-zinc-300 dark:hover:border-red-500/30"
         >
           <div className="grid md:grid-cols-2">
-            <div className="border-b border-zinc-800 bg-gradient-to-br from-red-500/10 to-transparent p-8 md:border-b-0 md:border-r">
-              <span className="font-mono text-xs uppercase tracking-widest text-red-400">
+            <div className="border-b border-zinc-200 bg-gradient-to-br from-red-500/5 to-transparent p-8 md:border-b-0 md:border-r md:border-zinc-200 dark:border-zinc-800 dark:bg-gradient-to-br dark:from-red-500/10 dark:to-transparent dark:md:border-zinc-800">
+              <span className="font-mono text-xs uppercase tracking-widest text-red-500 dark:text-red-400">
                 Latest Insight
               </span>
               <CategoryChip category={featured.category} active />
-              <h2 className="mt-4 text-2xl font-semibold text-white transition-colors group-hover:text-red-300 md:text-3xl">
+              <h2 className="mt-4 text-2xl font-semibold text-zinc-900 dark:text-white transition-colors group-hover:text-red-500 dark:group-hover:text-red-300 md:text-3xl">
                 {featured.title}
               </h2>
-              <p className="mt-3 text-zinc-400 leading-relaxed">
+              <p className="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 {featured.description}
               </p>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-red-400">
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-red-500 dark:text-red-400">
                 Read article
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
@@ -99,34 +99,34 @@ export function ArticleFeed() {
           <h3 className="mb-6 font-mono text-xs uppercase tracking-widest text-zinc-500">
             More Articles
           </h3>
-          <ul className="divide-y divide-zinc-800 rounded-xl border border-zinc-800">
+          <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
             {rest.map((article) => (
               <li key={article.slug}>
                 <Link
                   href={`/articles/${article.slug}`}
-                  className="group flex flex-col gap-3 p-6 transition-colors hover:bg-zinc-900/50 sm:flex-row sm:items-center sm:justify-between"
+                  className="group flex flex-col gap-3 p-6 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/50 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div className="min-w-0 flex-1">
                     <div className="mb-2 flex flex-wrap items-center gap-3">
                       <CategoryChip category={article.category} />
                       <time
-                        className="text-xs text-zinc-600"
+                        className="text-xs text-zinc-500 dark:text-zinc-600"
                         dateTime={article.publishedAt}
                       >
                         {formatDate(article.publishedAt)}
                       </time>
                     </div>
-                    <h4 className="font-semibold text-white transition-colors group-hover:text-red-300">
+                    <h4 className="font-semibold text-zinc-900 dark:text-white transition-colors group-hover:text-red-500 dark:group-hover:text-red-300">
                       {article.title}
                     </h4>
-                    <p className="mt-1 line-clamp-2 text-sm text-zinc-500">
+                    <p className="mt-1 line-clamp-2 text-sm text-zinc-600 dark:text-zinc-500">
                       {article.description}
                     </p>
                   </div>
                   <span className="flex shrink-0 items-center gap-2 text-sm text-zinc-500">
                     <Clock className="h-3.5 w-3.5" />
                     {article.readTime}
-                    <ArrowRight className="h-4 w-4 text-red-400 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
+                    <ArrowRight className="h-4 w-4 text-red-500 dark:text-red-400 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
                   </span>
                 </Link>
               </li>
