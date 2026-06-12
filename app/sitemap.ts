@@ -4,7 +4,7 @@ import { ARTICLES } from "@/lib/articles";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://webixlinks.com";
 
-  const staticRoutes = ["", "/about", "/services", "/portfolio", "/contact", "/articles"];
+  const staticRoutes = ["", "/about", "/services", "/portfolio", "/contact", "/articles", "/faq"];
   const staticEntries = staticRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

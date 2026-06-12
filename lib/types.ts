@@ -72,3 +72,10 @@ export interface SecurityStandard {
   description: string;
   icon: string;
 }
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+  category: string;
+}
+

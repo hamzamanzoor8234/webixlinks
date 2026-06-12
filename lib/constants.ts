@@ -6,12 +6,14 @@ import type {
   ProjectType,
   SecurityStandard,
   ServiceBlock,
+  FaqItem,
 } from "./types";
 
 export const NAV_LINKS: NavLink[] = [
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/articles", label: "Insights" },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -95,39 +97,39 @@ export const SERVICES: ServiceBlock[] = [
   {
     title: "Generative AI & LLMs",
     description:
-      "End-to-end AI systems from model selection to production inference pipelines.",
+      "Architecting autonomous agent networks and semantic retrieval pipelines using state-of-the-art open-source and proprietary foundation models.",
     capabilities: [
-      "Model optimization & fine-tuning",
-      "Custom API pipelines for LLM orchestration",
-      "Conversational AI architecture",
-      "Agentic workflow design & deployment",
-      "RAG and embedding strategy",
+      "Fine-tuning models using QLoRA, LoRA, and PEFT techniques",
+      "Orchestration via LangGraph, LangChain, and LlamaIndex frameworks",
+      "Vector database engineering (Pinecone, Milvus, Qdrant, pgvector)",
+      "Advanced hybrid RAG (Retrieval-Augmented Generation) pipelines",
+      "Evaluations, safety frameworks, and model guardrails (Guardrails AI)",
     ],
     icon: "sparkles",
   },
   {
     title: "Custom Development Stacks",
     description:
-      "Specialized expertise across modern and legacy stacks with clean migration paths.",
+      "Engineering production-grade backend APIs, microservices architectures, and full-stack web platforms optimized for high throughput and sub-second latency.",
     capabilities: [
-      "NestJS framework architecture & modules",
-      "MERN & MEAN full-stack systems",
-      "Legacy PHP & monolith modernization",
-      "REST & GraphQL API design",
-      "Database schema evolution & migrations",
+      "Modular NestJS architectures with strict dependency injection",
+      "MERN (MongoDB, Express, React, Node.js) & MEAN (Angular) stacks",
+      "Modernizing legacy PHP and monolithic systems into TypeScript microservices",
+      "High-performance RESTful, GraphQL, and gRPC API designs",
+      "Transactional schema designs (PostgreSQL RLS, MongoDB atomic sessions)",
     ],
     icon: "code",
   },
   {
     title: "UI/UX Design Studio",
     description:
-      "Component-driven interfaces that make complex data flows feel effortless.",
+      "Designing scalable, WCAG-compliant design systems and high-fidelity interactive wireframes verified against user workflows.",
     capabilities: [
-      "Rapid wireframing & prototyping",
-      "Design system creation & governance",
-      "Complex dashboard & data visualization UX",
-      "Accessibility-first component libraries",
-      "Design-to-engineering handoff workflows",
+      "Figma design system creation and cross-team token governance",
+      "WCAG 2.2 accessibility auditing and semantic HTML layouts",
+      "Complex dashboard visual designs and real-time canvas UX",
+      "Rapid interactive prototyping and low-friction user flows",
+      "Smooth micro-interactions and Framer Motion transitions",
     ],
     icon: "palette",
   },
@@ -211,5 +213,33 @@ export const PROJECT_TYPES: {
     id: "ui-ux",
     label: "UI/UX Product Design",
     description: "Design systems, wireframes, and product UX",
+  },
+];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    question: "What is an autonomous AI agent network and how does it improve operations?",
+    answer: "An autonomous AI agent network is a system where multiple role-specific AI agents (such as planners, researchers, executors, and critics) collaborate to execute multi-step workflows. Unlike single-shot chatbot prompts that suffer from context loss and memory degradation, agent networks operate under strict tool-calling contracts, maintain a persistent external state (using Redis or PostgreSQL), and execute self-correcting logic loops to validate outputs against business rules before committing changes.",
+    category: "Generative AI & LLMs",
+  },
+  {
+    question: "Why choose NestJS over standard Express.js for enterprise backend development?",
+    answer: "We choose NestJS because it provides a highly structured, modular architecture out-of-the-box, leveraging Dependency Injection (DI) as a first-class primitive. This structure enforces clean, maintainable boundaries between modules, unlike raw Express projects that frequently suffer from messy dependency graphs. Additionally, NestJS has native integration with TypeScript and official ecosystem packages for queues, microservices, and WebSockets, making it ideal for scaling development teams.",
+    category: "Custom Development Stacks",
+  },
+  {
+    question: "What are the benefits of direct-to-S3 presigned uploads in cloud architectures?",
+    answer: "Direct-to-S3 uploads bypass application servers by allowing clients to ingest binary files directly into object storage. This reduces compute overhead (CPU/bandwidth) on EC2 instances or serverless containers by 60%+ and eliminates upload bottlenecks. Security is maintained by having the NestJS backend issue short-lived, tenant-scoped presigned URLs with strict IAM least-privilege policies, preventing unauthorized bucket mutations.",
+    category: "Cloud DevOps & Security",
+  },
+  {
+    question: "How does Webixlinks ensure isolated data boundaries in multi-tenant SaaS systems?",
+    answer: "We implement defense-in-depth data isolation across all stack layers. This includes tenant-scoped database schemas, row-level access controls (RLS) in PostgreSQL, tenant-prefixed S3 keys, and JWT verification inside NestJS controllers that validate the client's tenant authorization at every API boundary. This architecture ensures no cross-client data leakage at rest or in transit.",
+    category: "Cloud DevOps & Security",
+  },
+  {
+    question: "Which cloud platforms do you support and how do you manage deployments?",
+    answer: "Webixlinks architects and deploys enterprise systems across AWS, Google Cloud Platform (GCP), and Microsoft Azure. We use Infrastructure as Code (IaC) principles with Terraform and GitHub Actions CI/CD pipelines. This ensures environment consistency, automated testing, isolated staging and production boundaries, and multi-region failover configurations.",
+    category: "Cloud DevOps & Security",
   },
 ];

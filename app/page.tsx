@@ -19,6 +19,20 @@ export default function HomePage() {
     "sameAs": [
       "https://github.com/webixlinks",
       "https://linkedin.com/company/webixlinks"
+    ],
+    "knowsAbout": [
+      "Generative AI & LLMs",
+      "Autonomous AI Agent Networks",
+      "LangGraph & LangChain Orchestration",
+      "Vector Database Engineering",
+      "Hybrid RAG Pipelines",
+      "NestJS Framework Architecture",
+      "MERN & MEAN Stack Development",
+      "Microservices & Event-Driven Architecture",
+      "AWS, GCP, & Microsoft Azure Multi-Cloud Engineering",
+      "Direct-to-S3 Presigned Upload Architectures",
+      "Data Isolation & Multi-Tenant SaaS Security",
+      "Figma Design Systems & WCAG 2.2 Accessibility"
     ]
   };
 
